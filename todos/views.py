@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from todos.models import TodoList, TodoItem
+from todos.models import TodoList
 from todos.forms import TodoListForm
 
 
@@ -29,3 +29,16 @@ def create_todo_list(request):
     context = {"form": form}
 
     return render(request, "todos/create_todo_list.html", context)
+
+
+def edit_todo_list(request, id):
+    edit = get_object_or_404(TodoList, id=id)
+    if request.method == "POST":
+        form = TodoListForm(request.POST, instance=edit)
+        if form.is_valid():
+            edit = form.save()
+            return redirect("todo_list_detail", id=id)
+    else:
+        form = TodoListForm(instance=edit)
+    context = {"form": form}
+    return render(request, "todos/todo_list_update.html", context)
