@@ -10,6 +10,8 @@
 {% block content %}
     <div>
         <h1>My Lists</h1>
+        <td><a href="{% url 'todo_list_create' %}"> Create a new list</a></td>
+
         <table>
             <thead>
                 <tr>
@@ -22,7 +24,9 @@
                     <tr>
                         <td><a href="{% url 'todo_list_detail' todos.id %}">{{ todos.name }}</a></td>
                         <td>{{ todos.items.count }}</td>
+
                     </tr>
+
                 {% endfor %}
             </tbody>
         </table>
