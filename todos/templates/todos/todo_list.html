@@ -20,16 +20,14 @@
             <tbody>
                 {% for todos in todo_list %}
                     <tr>
-                        <td>{{ todos.name }}</td>
-                        <td>0</td>
+                        <td><a href="{% url 'todo_list_detail' todos.id %}">{{ todos.name }}</a></td>
+                        <td>{{ todos.items.count }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 {% endblock %}
-
-
 
 </body>
 </html>
