@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div>
+        <h1>Create a new item</h1>
+        <form method="post">
+            <div>
+                <label for="task">Task:</label>
+                <input type="text" name="task" id="task">
+            </div>
+            <div>
+                <label for="due-date">Due Date:</label>
+                <input type="text" name="due_date" id="due-date">
+            </div>
+            <div>
+                <label for="is-completed">Is Completed:</label>
+                <input type="checkbox" name="is_completed" id="is-completed">
+            </div>
+            <div>
+                <label for="list">List:</label>
+                <select name="list" id="list">
+                    <option>------</option>
+                    {% for todo_list in todo_lists %}
+                    <option>------</option>
+                    <option value="{{ todo_list.id }}"> {{ todo_list.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Submit</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

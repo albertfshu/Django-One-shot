@@ -5,6 +5,7 @@ from todos.views import (
     create_todo_list,
     edit_todo_list,
     delete_todo_list,
+    create_todo_item,
 )
 
 
@@ -14,4 +15,5 @@ urlpatterns = [
     path("create/", create_todo_list, name="todo_list_create"),
     path("<int:id>/edit/", edit_todo_list, name="todo_list_update"),
     path("<int:id>/delete/", delete_todo_list, name="delete_todo_list"),
+    path("items/create/", create_todo_item, name="todo_item_create"),
 ]

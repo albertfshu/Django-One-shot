@@ -12,6 +12,7 @@
     <main>
         <div>
             <h1> {{ todolist.name }}</h1>
+            <p><a href="{% url 'todo_item_create' %}">Create a new item</a></a></p>
             <p><a href="{% url 'todo_list_update' todolist.id %}">Edit</a> <a href="{% url 'delete_todo_list' todolist.id %}">Delete</a></a></p>
             <h2>Tasks</h2>
             <table>
